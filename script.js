@@ -77,6 +77,8 @@ const elements = {
   overlayBody: document.getElementById("overlay-body"),
   overlayImage: document.getElementById("overlay-image"),
   rotationHandles: Array.from(document.querySelectorAll(".rotation-handle")),
+  controlsPanel: document.getElementById("controls-panel"),
+  mobileControlsToggle: document.getElementById("mobile-controls-toggle"),
   controlsList: document.getElementById("controls-list"),
   resetButton: document.getElementById("reset-button"),
   centerButton: document.getElementById("center-button"),
@@ -136,6 +138,7 @@ let statusTimer = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
   bindControls();
+  bindMobileControlsToggle();
   bindOverlayInteractions();
   updateRuntimeNote();
   showStatus("info", "準備中", "guide.png とカメラを初期化しています。");
@@ -213,6 +216,29 @@ async function loadOverlay() {
   defaultState = createDefaultState();
   state = { ...defaultState };
   syncAllControls();
+}
+
+function bindMobileControlsToggle() {
+  if (!elements.mobileControlsToggle) {
+    return;
+  }
+
+  const syncToggleState = () => {
+    const isCollapsed = document.body.classList.contains("mobile-controls-collapsed");
+
+    elements.mobileControlsToggle.textContent = isCollapsed
+      ? "Show sliders"
+      : "Hide sliders";
+    elements.mobileControlsToggle.setAttribute("aria-expanded", String(!isCollapsed));
+  };
+
+  elements.mobileControlsToggle.addEventListener("click", () => {
+    document.body.classList.toggle("mobile-controls-collapsed");
+    syncToggleState();
+    window.requestAnimationFrame(handleViewportChange);
+  });
+
+  syncToggleState();
 }
 
 function bindControls() {

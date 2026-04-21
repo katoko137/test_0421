@@ -9,7 +9,7 @@
     <title>赤枠ガイド調整</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body class="mobile-controls-collapsed">
     <div class="app-shell">
       <main class="preview-panel">
         <div class="preview-stage" id="preview-stage">
@@ -59,7 +59,17 @@
         </div>
       </main>
 
-      <aside class="controls-panel">
+      <button
+        type="button"
+        class="mobile-controls-toggle"
+        id="mobile-controls-toggle"
+        aria-controls="controls-panel"
+        aria-expanded="false"
+      >
+        Show sliders
+      </button>
+
+      <aside class="controls-panel" id="controls-panel">
         <div class="panel-heading">
           <p class="eyebrow">Camera Overlay Studio</p>
           <h1>赤枠ガイド調整</h1>
