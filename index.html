@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    >
+    <title>赤枠ガイド調整</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="preview-panel">
+        <div class="preview-stage" id="preview-stage">
+          <video
+            id="camera-feed"
+            class="camera-feed"
+            autoplay
+            playsinline
+            muted
+          ></video>
+          <div class="overlay-layer" id="overlay-layer" role="group" aria-label="赤枠オーバーレイ" hidden>
+            <div class="overlay-body" id="overlay-body">
+              <img id="overlay-image" class="overlay-image" alt="">
+            </div>
+            <button
+              type="button"
+              class="rotation-handle rotation-handle-z"
+              data-axis="rotateZ"
+              data-drag-axis="y"
+              aria-label="平面回転を調整"
+            >
+              <span class="rotation-handle-glyph" aria-hidden="true">⟳</span>
+            </button>
+            <button
+              type="button"
+              class="rotation-handle rotation-handle-x"
+              data-axis="rotateX"
+              data-drag-axis="y"
+              aria-label="縦回転を調整"
+            >
+              <span class="rotation-handle-glyph" aria-hidden="true">↕</span>
+            </button>
+            <button
+              type="button"
+              class="rotation-handle rotation-handle-y"
+              data-axis="rotateY"
+              data-drag-axis="x"
+              aria-label="横回転を調整"
+            >
+              <span class="rotation-handle-glyph" aria-hidden="true">↔</span>
+            </button>
+          </div>
+          <div class="status-card" id="status-card" data-tone="info" hidden>
+            <strong id="status-title">準備中</strong>
+            <p id="status-detail">カメラとガイド画像を初期化しています。</p>
+          </div>
+        </div>
+      </main>
+
+      <aside class="controls-panel">
+        <div class="panel-heading">
+          <p class="eyebrow">Camera Overlay Studio</p>
+          <h1>赤枠ガイド調整</h1>
+          <p class="panel-description">
+            カメラ映像の上に赤枠ガイドを重ね、位置・サイズ・回転をスライダーや
+            直接操作ですばやく調整できます。
+          </p>
+        </div>
+
+        <div class="control-list" id="controls-list" aria-label="調整スライダー"></div>
+
+        <div class="button-row">
+          <button type="button" class="button button-accent" id="reset-button">
+            リセット
+          </button>
+          <button type="button" class="button button-soft" id="center-button">
+            中央に戻す
+          </button>
+          <button type="button" class="button button-dark" id="retry-button">
+            カメラ再試行
+          </button>
+        </div>
+
+        <p class="runtime-note" id="runtime-note">
+          起動方法を確認しています。
+        </p>
+      </aside>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
