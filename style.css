@@ -409,21 +409,32 @@ input {
 
   .app-shell {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(34dvh, 42dvh) minmax(0, 1fr);
+    grid-template-rows: minmax(56dvh, 62dvh) minmax(0, 1fr);
     max-height: 100dvh;
     padding: 8px;
     gap: 8px;
   }
 
   .preview-panel {
+    align-items: center;
+    justify-content: center;
     padding: 8px;
     border-radius: 24px;
   }
 
   .preview-stage {
+    flex: 0 0 auto;
     min-height: 0;
-    height: 100%;
+    width: min(100%, 33dvh);
+    max-height: 100%;
+    aspect-ratio: 9 / 16;
+    height: auto;
     border-radius: 18px;
+  }
+
+  .camera-feed {
+    object-fit: cover;
+    object-position: center;
   }
 
   .preview-stage::after {
